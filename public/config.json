@@ -1,0 +1,12 @@
+{
+  "wellKnowns": [
+    "https://dev-legitscript.us.auth0.com/.well-known/openid-configuration"
+  ],
+  "clients": [
+    {
+      "name": "Test Client",
+      "provider": "https://dev-legitscript.us.auth0.com/.well-known/openid-configuration",
+      "id": "some-client-id"
+    }
+  ]
+}
