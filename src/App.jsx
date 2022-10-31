@@ -16,7 +16,7 @@ function App() {
   );
 
   useEffect(() => {
-    fetch("/config.json")
+    fetch("config.json")
       .then((response) => {
         if (response.ok) {
           return response.json();
