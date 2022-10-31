@@ -1,6 +1,7 @@
 import { useState, useEffect, useId } from "react";
 import _ from "lodash";
 import { useConfigStore } from "../store";
+import { redirectURI } from "../lib/helpers";
 
 const AddClient = () => {
   const id = useId();
@@ -73,8 +74,7 @@ const AddClient = () => {
 
       <p>
         When registering your client, be sure to use{" "}
-        <code>{window.location.origin}</code> for the{" "}
-        <strong>Redirect URI</strong>
+        <code>{redirectURI()}</code> for the <strong>Redirect URI</strong>
       </p>
 
       <label htmlFor={`${id}-client-id`}>Client Id</label>

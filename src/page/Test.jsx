@@ -4,6 +4,7 @@ import _ from "lodash";
 import { useConfigStore, useSessionStore } from "../store";
 import SelectClient from "../components/SelectClient";
 import URIDisplay from "../components/URIDisplay";
+import { redirectURI } from "../lib/helpers";
 import "./Test.css";
 
 const Test = () => {
@@ -19,7 +20,11 @@ const Test = () => {
     }
   }, [configs, client]);
 
-  const authURL = `${config?.authorization_endpoint}?client_id=${client?.id}&response_type=token+id_token&redirect_uri=${window.location.origin}&scope=openid+email&nonce=${session.nonce}`;
+  const authURL = `${config?.authorization_endpoint}?client_id=${
+    client?.id
+  }&response_type=token+id_token&redirect_uri=${redirectURI()}&scope=openid+email&nonce=${
+    session.nonce
+  }`;
 
   return (
     <section>
