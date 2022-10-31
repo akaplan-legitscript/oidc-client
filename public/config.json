@@ -4,7 +4,7 @@
   ],
   "clients": [
     {
-      "name": "Test Client",
+      "name": "LegitScript Auth0 Dev",
       "provider": "https://dev-legitscript.us.auth0.com/.well-known/openid-configuration",
       "id": "Hr0undAnGdHTTBILy381CpZB6u5a8nUH"
     }
