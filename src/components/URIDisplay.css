@@ -1,0 +1,35 @@
+.language-uri {
+  --default: #96CBFE;
+  --important: #fd971f;
+  --symbol: #569cd6;
+  --key: #C6C5FE;
+  --value: #ce9178;
+}
+
+
+.language-uri {
+  color: var(--default);
+}
+
+.language-uri .scheme {
+  color: var(--important);
+}
+
+.language-uri .query,
+.language-uri .path-separator,
+.language-uri .scheme-delimiter,
+.language-uri .authority-delimiter    {
+  color: var(--symbol);
+}
+
+.language-uri .query-delimiter:before,
+.language-uri .pair-delimiter:before {
+  content: "\a";
+}
+
+.language-uri .pair.key {
+  color: var(--key)
+}
+.language-uri .pair.value {
+  color: var(--value)
+}

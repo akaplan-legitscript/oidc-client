@@ -72,7 +72,8 @@ const AddClient = () => {
       <small>Choose which provider this client is associated with.</small>
 
       <p>
-        When registering your client, be sure to use <code>url</code> for the{" "}
+        When registering your client, be sure to use{" "}
+        <code>{window.location.origin}</code> for the{" "}
         <strong>Redirect URI</strong>
       </p>
 

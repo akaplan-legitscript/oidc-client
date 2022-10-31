@@ -1,6 +1,7 @@
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import uri from "react-syntax-highlighter/dist/esm/languages/prism/uri";
-import style from "react-syntax-highlighter/dist/esm/styles/prism/lucario";
+import style from "react-syntax-highlighter/dist/esm/styles/prism/vs-dark";
+import "./URIDisplay.css";
 
 SyntaxHighlighter.registerLanguage("uri", uri);
 
