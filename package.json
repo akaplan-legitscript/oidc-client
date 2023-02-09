@@ -16,6 +16,7 @@
     "immer": "^9.0.16",
     "jose": "^4.10.4",
     "lodash": "^4.17.21",
+    "pkce-challenge": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.5",

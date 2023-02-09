@@ -15,8 +15,10 @@ const JWTDisplay = ({token, title, state}) => {
   );
 
   useEffect(() => {
-    JWT(token, configs, session.states[state]).then(setJWT)
-  }, []);
+    if (token) {
+      JWT(token, configs, session.states[state]).then(setJWT)
+    }
+  }, [token]);
 
   return (
     <div className="grid">

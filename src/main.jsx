@@ -10,11 +10,13 @@ import "./main.css";
 if (!window.location.hash.startsWith("#/")) {
   window.location.hash = "#/" + window.location.hash.substring(1);
 }
+// handle redirect from pkce flow
+if (window.location.search || window.location.path) {
+  window.location.href = "/#" + (window.location.path || '/') + window.location.search.substring(1);
+}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </React.StrictMode>
+  <HashRouter>
+    <App />
+  </HashRouter>
 );

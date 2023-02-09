@@ -2,6 +2,7 @@ import create from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { persist } from "zustand/middleware";
 import _ from "lodash";
+import pkceChallenge from 'pkce-challenge'
 
 export const useConfigStore = create(
   persist(
@@ -43,6 +44,7 @@ export const useSessionStore = create(
         const authRequest = {
           nonce: Math.random().toString(36).substring(2),
           state: Math.random().toString(36).substring(2),
+          pkce: pkceChallenge(),
           client
         };
         set((state) => {

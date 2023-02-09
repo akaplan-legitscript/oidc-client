@@ -3,8 +3,8 @@ import * as jose from "jose";
 
 export const JWT = async (token, configs, authRequest) => {
   const [headerPart, bodyPart, signature] = token.split(".");
-  const header = _.isString(headerPart) && JSON.parse(atob(headerPart));
-  const body = _.isString(bodyPart) && JSON.parse(atob(bodyPart));
+  const header = JSON.parse(atob(headerPart));
+  const body = JSON.parse(atob(bodyPart));
 
   const client = authRequest.client;
   const config = _.find(configs, ["issuer", body.iss]);
