@@ -4,27 +4,24 @@ import _ from "lodash";
 import { useConfigStore, useSessionStore } from "../store";
 import SelectClient from "../components/SelectClient";
 import URIDisplay from "../components/URIDisplay";
-import { redirectURI } from "../lib/helpers";
+import { authorizeUrl } from "../lib/helpers";
 import "./Test.css";
 
 const Test = () => {
   const [client, setClient] = useState({});
   const [config, setConfig] = useState({});
+  const [authRequest, setAuthRequest] = useState({});
   const { configs } = useConfigStore((state) => _.pick(state, ["configs"]));
   const session = useSessionStore();
 
   useEffect(() => {
     if (client.provider && configs[client.provider]) {
       setConfig(configs[client.provider]);
-      session.newNonce();
+      setAuthRequest(session.newRequest(client));
     }
   }, [configs, client]);
 
-  const authURL = `${config?.authorization_endpoint}?client_id=${
-    client?.id
-  }&response_type=token+id_token&redirect_uri=${redirectURI()}&scope=openid+email&nonce=${
-    session.nonce
-  }`;
+  const authURL = authorizeUrl(config, client, authRequest);
 
   return (
     <section>

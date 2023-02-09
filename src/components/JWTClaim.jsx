@@ -1,4 +1,5 @@
 import { useId } from "react";
+import _ from 'lodash';
 
 const JWTClaim = ({ jwt, claim }) => {
   const id = useId();
@@ -18,17 +19,22 @@ const JWTClaim = ({ jwt, claim }) => {
     details = jwt.format.details[claim];
   }
 
+  const toArray = _.isArray(value) ? value : [value];
+
   return (
     <fieldset key={claim}>
       <label htmlFor={`${id}-${claim}`}>{label}</label>
-      <input
-        id={`${id}-${claim}`}
-        name={claim}
-        value={value}
-        type="text"
-        aria-invalid={!valid}
-        readOnly
-      />
+      {toArray.map((val, index) => (
+        <input
+          id={`${id}-${claim}-${index}`}
+          key={index}
+          name={claim}
+          value={val}
+          type="text"
+          aria-invalid={!valid}
+          readOnly
+        />
+      ))}
       <small>{details}</small>
     </fieldset>
   );

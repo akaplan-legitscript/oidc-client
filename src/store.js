@@ -30,7 +30,7 @@ export const useConfigStore = create(
       },
     })),
     {
-      version: 5,
+      version: 6,
     }
   )
 );
@@ -38,16 +38,22 @@ export const useConfigStore = create(
 export const useSessionStore = create(
   persist(
     immer((set) => ({
-      nonce: "",
-      newNonce: () => {
+      states: {},
+      newRequest: (client) => {
+        const authRequest = {
+          nonce: Math.random().toString(36).substring(2),
+          state: Math.random().toString(36).substring(2),
+          client
+        };
         set((state) => {
-          state.nonce = Math.random().toString(36).substring(2);
+          state.states[authRequest.state] = authRequest
         });
+        return authRequest;
       },
     })),
     {
       getStorage: () => sessionStorage,
-      version: 5,
+      version: 6,
     }
   )
 );

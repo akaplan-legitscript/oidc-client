@@ -6,7 +6,10 @@
     {
       "name": "LegitScript Auth0 Dev",
       "provider": "https://dev-legitscript.us.auth0.com/.well-known/openid-configuration",
-      "id": "SMGjzGiiqQJnBs3vpjSZw9rRPuB3WcFB"
+      "id": "SMGjzGiiqQJnBs3vpjSZw9rRPuB3WcFB",
+      "authorize": {
+        "audience": "https://api.legitscript.com"
+      }
     }
   ]
 }

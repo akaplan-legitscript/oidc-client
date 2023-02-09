@@ -1,12 +1,12 @@
 import _ from "lodash";
 import * as jose from "jose";
 
-export const JWT = async (token, configs, clients, session) => {
+export const JWT = async (token, configs, authRequest) => {
   const [headerPart, bodyPart, signature] = token.split(".");
-  const header = JSON.parse(atob(headerPart));
-  const body = JSON.parse(atob(bodyPart));
+  const header = _.isString(headerPart) && JSON.parse(atob(headerPart));
+  const body = _.isString(bodyPart) && JSON.parse(atob(bodyPart));
 
-  const client = _.find(clients, ["id", body.aud]);
+  const client = authRequest.client;
   const config = _.find(configs, ["issuer", body.iss]);
 
   let validation;
@@ -15,7 +15,6 @@ export const JWT = async (token, configs, clients, session) => {
     const JWKS = jose.createRemoteJWKSet(new URL(config.jwks_uri));
     validation = await jose.jwtVerify(token, JWKS, {
       issuer: config.issuer,
-      audience: client.id,
       clockTolerance: 5,
     });
   } catch (e) {
@@ -33,7 +32,7 @@ export const JWT = async (token, configs, clients, session) => {
         }
 
         if (_.isArray(aud)) {
-          return aud.some((a) => a === client.id);
+          return aud.some((a) => a === client.authorize.audience || a === client.id);
         }
       },
       exp: (exp, now) => {
@@ -46,7 +45,7 @@ export const JWT = async (token, configs, clients, session) => {
         return iss === config.issuer;
       },
       nonce: (nonce, now) => {
-        return nonce === session.nonce;
+        return nonce === authRequest.nonce;
       },
       signature: () => {
         return !validationError;

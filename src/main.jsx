@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import App from "./App";
 import "@picocss/pico";
+import "./main.css";
 
 // Page load route fix for Hash Router
 // https://github.com/remix-run/react-router/issues/8638
