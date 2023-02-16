@@ -31,7 +31,7 @@ export const useConfigStore = create(
       },
     })),
     {
-      version: 6,
+      version: 7,
     }
   )
 );
@@ -55,7 +55,7 @@ export const useSessionStore = create(
     })),
     {
       getStorage: () => sessionStorage,
-      version: 6,
+      version: 7,
     }
   )
 );
