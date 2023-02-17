@@ -1,11 +1,11 @@
 {
   "wellKnowns": [
-    "https://legitscript-development.us.auth0.com/.well-known/openid-configuration"
+    "https://login.development.legitscript.net/.well-known/openid-configuration"
   ],
   "clients": [
     {
       "name": "LegitScript Auth0 Dev",
-      "provider": "https://legitscript-development.us.auth0.com/.well-known/openid-configuration",
+      "provider": "https://login.development.legitscript.net/.well-known/openid-configuration",
       "id": "Wx1A15k2IZdqtOPvQnxhRcbQr44bmvQL",
       "authorize": {
         "audience": "https://api.legitscript.com"
